@@ -1,0 +1,47 @@
+{
+  "name": "AI-Powered Nutrition Agent",
+  "description": "Nutrition and dietary guidance agent built with IBM Granite and LangFlow",
+  "data": {
+    "nodes": [
+      {
+        "id": "chat-input-1",
+        "type": "ChatInput",
+        "position": { "x": 100, "y": 250 },
+        "data": {
+          "input_value": "Suggest a balanced, high-protein meal plan for dinner.",
+          "node_type": "ChatInput"
+        }
+      },
+      {
+        "id": "watsonx-granite-1",
+        "type": "IBM watsonx.ai",
+        "position": { "x": 450, "y": 250 },
+        "data": {
+          "model_name": "ibm/granite-3-8b-instruct",
+          "project_id": "5bf7d8a3-cb5e-4e64-84d8-ecd114946b24",
+          "system_prompt": "You are an AI-powered Nutrition Agent. Provide balanced, personalized dietary guidance, healthy ingredient substitutions, and meal recommendations grounded in nutritional facts.",
+          "temperature": 0.3,
+          "max_tokens": 1024
+        }
+      },
+      {
+        "id": "chat-output-1",
+        "type": "ChatOutput",
+        "position": { "x": 800, "y": 250 },
+        "data": {
+          "node_type": "ChatOutput"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "chat-input-1",
+        "target": "watsonx-granite-1"
+      },
+      {
+        "source": "watsonx-granite-1",
+        "target": "chat-output-1"
+      }
+    ]
+  }
+}
